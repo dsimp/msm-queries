@@ -1,11 +1,5 @@
 <h1>List of all movies</h1>
 
-<% Movie.all.each do |a_movie| %>
-  <li>
-    <%= a_movie.name %> (<%= a_director.dob %>)
-  </li>
-<% end%>
-
 
 <table border="1">
   <tr>
@@ -20,16 +14,15 @@
 
   <% Movie.all.each do |a_movie| %>
   
-    
     <tr>
-    <td><%= a_movie.id %> </td>
-    <td><img src="<%= a_movie.image %>" width="50"></td>
-    <td><%= a_movie.title %></td>
-    <td><%= a_movie.year %></td>
-    <td>
-    <%= matching_records = Movie.where({ :id => a_movie.director_id%>
+      <td><%= a_movie.id %> </td>
+      <td><img src="<%= a_movie.image %>" width="50"></td>
+      <td><%= a_movie.title %></td>
+      <td><%= a_movie.year %></td>
+      <td>
+      <% matching_records = Director.where({ :id => a_movie.director_id})%>
 
-    <%= the_director = matching_records.at(0)%>
+      <% the_director = matching_records.at(0)%>
       <%= the_director.name %>
     </td>
     <td>
